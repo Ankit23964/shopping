@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/useAppSelector';
+
 type CategoryType = { name: string };
+
 const CategorySection: React.FC = () => {
   const { categories } = useAppSelector((state) => state.products);
 
@@ -12,6 +14,8 @@ const CategorySection: React.FC = () => {
     'skincare': 'https://images.pexels.com/photos/3321416/pexels-photo-3321416.jpeg?auto=compress&cs=tinysrgb&w=800',
     'groceries': 'https://images.pexels.com/photos/264636/pexels-photo-264636.jpeg?auto=compress&cs=tinysrgb&w=800',
     'home-decoration': 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'beauty': 'https://images.pexels.com/photos/3373743/pexels-photo-3373743.jpeg?auto=compress&cs=tinysrgb&w=800',
+    'kitchen-accessories': 'https://images.pexels.com/photos/6205514/pexels-photo-6205514.jpeg?auto=compress&cs=tinysrgb&w=800',
     'furniture': 'https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=800',
     'tops': 'https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=800',
     'womens-dresses': 'https://images.pexels.com/photos/985635/pexels-photo-985635.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -44,10 +48,9 @@ const CategorySection: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayCategories.map((category, index) => {
-            //const categoryStr = typeof category === 'string' ? category : category.name; // Safely access the name property
             const categoryStr = typeof category === 'string' ? category : (category as CategoryType).name;
             const categoryName = categoryStr.replace(/-/g, ' ');
-
+            const normalizedCategoryKey = categoryStr.toLowerCase().replace(/\s+/g, '-');
 
             return (
               <Link
@@ -58,7 +61,7 @@ const CategorySection: React.FC = () => {
                 <div className="relative h-64">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
                   <img
-                    src={categoryImages[categoryStr] || defaultImage}
+                    src={categoryImages[normalizedCategoryKey] || defaultImage}
                     alt={categoryName}
                     className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                     style={{ objectFit: 'cover' }}
