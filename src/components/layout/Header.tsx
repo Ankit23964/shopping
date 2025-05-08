@@ -4,7 +4,7 @@ import { Search, ShoppingCart, Menu, X, User } from 'lucide-react';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { toggleCart, toggleMenu, toggleSearch } from '../../store/slices/uiSlice';
-import Button from '../common/Button';
+
 import CartDropdown from '../cart/CartDropdown';
 
 // Define the Category type
@@ -56,7 +56,7 @@ const Header: React.FC = () => {
               </button>
               <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right">
                 <div className="py-1" role="menu" aria-orientation="vertical">
-                  {categories.slice(0, 8).map((categoryObj: Category) => {
+                  {(categories ?? []).slice(0, 8).map((categoryObj: Category) => {
                     const category = categoryObj.name;
                     return (
                       <Link

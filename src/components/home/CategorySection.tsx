@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/useAppSelector';
-
+type CategoryType = { name: string };
 const CategorySection: React.FC = () => {
   const { categories } = useAppSelector((state) => state.products);
 
@@ -44,8 +44,10 @@ const CategorySection: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayCategories.map((category, index) => {
-            const categoryStr = typeof category === 'string' ? category : String(category);
+            //const categoryStr = typeof category === 'string' ? category : category.name; // Safely access the name property
+            const categoryStr = typeof category === 'string' ? category : (category as CategoryType).name;
             const categoryName = categoryStr.replace(/-/g, ' ');
+
 
             return (
               <Link
