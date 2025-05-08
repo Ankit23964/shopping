@@ -2,7 +2,7 @@
 
 Welcome to **ShopWave**, a modern and responsive e-commerce web application built with React, TypeScript, Redux Toolkit, and Tailwind CSS. This project showcases a clean and dynamic shopping experience with features like flash deals, product categories, cart functionality, and responsive design.
 
-🚀 **Live Demo**: [Visit ShopWave on Vercel](https://vercel.com/ankit-s-shettys-projects/shopping)
+🚀 **Live Demo**: [Visit ShopWave on Vercel](https://shopping-xi-five.vercel.app/)
 
 ---
 
